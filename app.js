@@ -1,16 +1,21 @@
-var express = require('express')
-var app = express()
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+//var cookieParser = require('cookie-parser');
+var indexRouter = require('./routes/home');
+//var usersRouter = require('./routes/users');
 
-let port = process.env.PORT;
+var app = express();
 
-app.get('/',function (req,res) {
-   res.send('Hello World!')
-});
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+// app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-if (port == null || port == "") {
-    port = 8000;
-}
+app.use('/', indexRouter);
+// app.use('/users', usersRouter);
 
-app.listen(port, function() {
-    console.log(`Server running at Heroku`);
-});
+module.exports = app;
