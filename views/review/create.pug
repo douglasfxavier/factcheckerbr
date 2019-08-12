@@ -1,0 +1,22 @@
+extends ../layout/layout
+block content
+    div.container
+        h1.mb-3
+        div.row
+            div.col
+                p URL: #{url}
+                p Headline: !{newsArticle.headline}
+                p Description: !{newsArticle.description}
+            div.col
+                form(method='POST' action='/review/sucesso')
+                    input(name='newsArticle' type='hidden' value=newsArticle)
+                    input(name='url' type='hidden' value=url)
+                    label(for='author') Autor
+                    input(id='author' name='author'   type='text').form-control
+                    label(for='claimReviewed') Titulo
+                    input(id='claimReviewed' name='claimReviewed' type='text').form-control
+                    label(for='review') Titulo
+                    textarea(id='review' name='review' rows=5).form-control
+                    <br/>
+                    button.btn-primary.float-right(type='submit') Enviar
+

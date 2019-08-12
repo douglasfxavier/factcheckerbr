@@ -1,0 +1,19 @@
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://factcheckerapp:sm5emU2xyEd7sx7u@cluster0-3ebyl.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, poolSize: 10 });
+var db;
+
+var connection = function(callback) {
+    if (db) {
+        callback(db);
+        return;
+    }
+
+    client.connect(err => {
+        if (err) throw err;
+        db = client.db('factcheckerbr');
+        callback(client,db);
+    })
+};
+
+module.exports = connection;
