@@ -1,12 +1,24 @@
 extends ../layout/layout
 block content
     div.container
-        h1.mb-3
+        h1.mb-3 Novo review
         div.row
             div.col
-                p URL: #{url}
-                p Headline: !{newsArticle.headline}
-                p Description: !{newsArticle.description}
+                p #[strong URL:] #{url}
+                p #[strong Manchete:] !{newsArticle.headline}
+                p #[strong Descrição:] !{newsArticle.description}
+                p #[strong Autor(es):]
+                    if newsArticle.author.length > 1
+                        each val in newsArticle.author
+                            span </br> #{val.name}
+                    else
+                        span #{newsArticle.author.name}
+                p #[strong Site:] !{newsArticle.publisher.name}
+                - var date = new Date(newsArticle.datePublished)
+                - var day = date.getDate()
+                - var month = date.getMonth()
+                - var year = date.getFullYear()
+                p #[strong Data da publicação:] #{day + '/' + month + '/' + year}
             div.col
                 form(method='POST' action='/review/sucesso')
                     input(name='newsArticle' type='hidden' value=newsArticle)

@@ -1,3 +1,0 @@
-class NewsArticle extends NewsItem{
-    
-}

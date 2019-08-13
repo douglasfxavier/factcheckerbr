@@ -1,10 +1,11 @@
+const app = require('../app');
 const XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 const xhr = new XMLHttpRequest();
 var newsArticle = '';
 
-var getNewsArticle = function (url,callback) {
+exports.getNewsArticle = function (url,callback) {
 
     xhr.onload = function() {
         let dom = new JSDOM(xhr.responseText);
@@ -23,4 +24,13 @@ var getNewsArticle = function (url,callback) {
     callback(newsArticle);
 };
 
-module.exports = getNewsArticle;
+exports.jsonLDParse = function(newsArticleJson){
+    let parsedJson = JSON.parse(newsArticleJson,(key, value) => {
+        if (typeof value === 'number' || typeof value == 'date') {
+            return escape(value);
+        } else {
+            return value;
+        }
+    });
+    return parsedJson;
+};

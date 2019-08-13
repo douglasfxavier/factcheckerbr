@@ -5,7 +5,7 @@ var db;
 
 var connection = function(callback) {
     if (db) {
-        callback(db);
+        callback(client,db);
         return;
     }
 
