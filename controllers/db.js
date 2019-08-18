@@ -1,11 +1,12 @@
 const MongoClient = require('mongodb').MongoClient;
-const uri = process.env.DB_URI
+//const uri = process.env.DB_URI
+const uri = "mongodb+srv://factcheckerapp:abcd1234@cluster0-3ebyl.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, poolSize: 10 });
 var db;
 
 var connection = function(callback) {
     if (db) {
-        callback(client,db);
+        callback(cleint,db);
         return;
     }
 
