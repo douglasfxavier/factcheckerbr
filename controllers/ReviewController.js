@@ -9,7 +9,7 @@ exports.save_review = function(req, res){
         .setReviewDate(new Date()) // Current date
         .setClaimReviewed(req.body.claimReviewed)
         .setReviewBody(req.body.review)
-        .setUrl(res.body.url)
+        .setUrl(req.body.url)
         .setType(newsArticle["@type"])
         .setHeadline(newsArticle["headline"])
         .setDescription(newsArticle["description"])
