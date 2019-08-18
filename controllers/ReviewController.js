@@ -31,7 +31,10 @@ exports.get_reviews = function (req, res) {
     let app = require('../app');
     let reviewsCollection = app.locals.reviews;
 
-    reviews = reviewsCollection.find({"claimReview.itemReviewed.url":req.body.url});
-    res.json(reviews);
+    reviews = reviewsCollection.find({"claimReview.itemReviewed.url":req.body.url},function (err, result){
+        if (err) throw err;
+        res.json(reviews);
+    });
+
 };
 
