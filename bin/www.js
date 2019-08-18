@@ -7,21 +7,19 @@ app.set('port',port)
 
 var server = http.createServer(app);
 
+var dbClient;
 
-dbConnection((client,db) => {
-
+dbConnection((client, db) => {
     let reviews = db.collection('reviews');
-
 
     app.locals.reviews = reviews;
     app.listen(port, function() {
         console.log(`Server running `);
     });
-    client.close()
+    dbClient = client;
 });
 
-// process.on('SIGINT', () => {
-//     dbClient.close();
-//     process.exit();
-// });
-
+process.on('SIGINT', () => {
+    dbClient.close();
+    process.exit();
+});
