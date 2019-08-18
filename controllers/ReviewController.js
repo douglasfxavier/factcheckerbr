@@ -27,5 +27,10 @@ exports.save_review = function(req, res){
     res.render('review/sucesso',{'review':reviewJSONLD});
 };
 
+exports.get_reviews = function (req, res) {
+    let reviewsCollection = app.locals.reviews;
 
+    //reviews = reviewsCollection.find({"claimReview.itemReviewed.url":req.body.url});
+    res.json({teste: "testado"});
+};
 
