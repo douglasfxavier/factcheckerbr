@@ -33,9 +33,9 @@ exports.get_reviews = function (req, res) {
 
     // reviews = reviewsCollection.find({"claimReview.itemReviewed.url":req.body.url},function (err, result){
 
-        reviews = reviewsCollection.find({},function (err, result){
+    reviewsCollection.find({},function (err, reviewsJson){
         if (err) throw err;
-        res.json(reviews);
+        res.json(reviewsJson);
     });
 
 };
