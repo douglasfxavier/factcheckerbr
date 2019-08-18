@@ -1,42 +1,6 @@
 exports.subscribe = function (news_url) {
-    var amqp = require('amqplib/callback_api');
+    let reviewsCollection = app.locals.reviews;
 
-    amqp.connect('amqp://qtfvkmmg:3j8laKyaWXS8_y521PcWxBxazqWPRsR7@jellyfish.rmq.cloudamqp.com/qtfvkmmg', function(error0, connection) {
-        if (error0) {
-            throw error0;
-        }
-        connection.createChannel(function (error1, channel) {
-            if (error1) {
-                throw error1;
-            }
-            var exchange = news_url;
+    
 
-            channel.assertExchange(exchange, 'fanout', {
-                durable: true
-            });
-
-            channel.assertQueue('', {
-                exclusive: true
-            }, function (error2, q) {
-                if (error2) {
-                    throw error2;
-                }
-                console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q.queue);
-                channel.bindQueue(q.queue, exchange, '');
-
-                channel.consume(q.queue, function (msg) {
-                    if (msg.content) {
-                        console.log(" [x] %s", msg.content.toString());
-                    }
-                }, {
-                    noAck: true
-                });
-            });
-
-            setTimeout(function () {
-                connection.close();
-                process.exit(0);
-            }, 500);
-        });
-    });
-}
+};
