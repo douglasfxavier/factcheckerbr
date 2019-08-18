@@ -31,9 +31,9 @@ exports.get_reviews = function (req, res) {
     let app = require('../app');
     let reviewsCollection = app.locals.reviews;
 
-    reviews = reviewsCollection.find({"claimReview.itemReviewed.url":"https://politica.estadao.com.br/blogs/fausto-macedo/lewandowski-rejeita-pedido-da-rede-contra-decisao-de-toffoli-sobre-coaf/"});
-    if (reviews != null)
-        res.json(reviews);
+    if (revreviewsCollectioniews != null)
+        reviews = reviewsCollection.find({"claimReview.itemReviewed.url":"https://politica.estadao.com.br/blogs/fausto-macedo/lewandowski-rejeita-pedido-da-rede-contra-decisao-de-toffoli-sobre-coaf/"});
+        res.json(reviews)
     else {
         res.json({"resultado":"nao deu certo a query"})
     }
