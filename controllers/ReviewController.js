@@ -32,12 +32,11 @@ exports.get_reviews = function (req, res) {
     let reviewsCollection = app.locals.reviews;
     let query = '{claimReview.itemReviewed.url:"'+ req.body.url + '"}';
 
-    reviewsCollection.find(query)
+    reviewsCollection.findOne(query)
         .toArray(function (err, result) {
             if (err) throw err;
             console.log(req.body.url);
             console.log(result);
-
             res.json(result);
         });
 };

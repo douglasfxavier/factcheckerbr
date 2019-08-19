@@ -15,7 +15,10 @@
    version="1.1"
    id="svg547"
    inkscape:version="0.92.4 (f8dce91, 2019-08-02)"
-   sodipodi:docname="factcheckerbrlogo.svg">
+   sodipodi:docname="factcheckerbrlogo.svg"
+   inkscape:export-filename="/home/douglas/factcheckerbr/resources/images/factcheckerbrlogo.svg.png"
+   inkscape:export-xdpi="25"
+   inkscape:export-ydpi="25">
   <defs
      id="defs541" />
   <sodipodi:namedview
@@ -25,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.08"
-     inkscape:cx="293.87106"
-     inkscape:cy="25.147974"
+     inkscape:zoom="0.38183766"
+     inkscape:cx="-100.33329"
+     inkscape:cy="-136.07063"
      inkscape:document-units="mm"
      inkscape:current-layer="g3965"
      showgrid="false"
@@ -48,7 +51,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
