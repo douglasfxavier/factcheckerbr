@@ -1,10 +1,15 @@
-extends layout/layout.pug
+extends layout/layout
 block content
-    div.container
-        h1.mb-3 FactChecker BR
+    div(class="text-center center-block", style="margin:100px;")
+        img.img-fluid(src="/images/factcheckerbrlogo.svg" alt="FactCheckBR logo" style="height:20%;width:30%;")
         form(method='POST' action='/review/create')
-            div.form-group
-            label(for=url)
-            input#url.form-control(type=text,placeholder='http://' name='url')
-            <br/>
-            button.btn-primary.float-right(type='submit') Carregar
+            div.row
+                div.col-md-12
+                    div.row.d-flex.justify-content-center
+                        div.col-md-8
+                            div.row
+                                label(for=url)
+                                input#url.form-control(type=text placeholder='http://' name='url' style="margin-top:30px;")
+                            div.row.float-right
+                                button.form-control.btn.btn-dark(style=" margin-top:10px;width:100px" type='submit') Carregar
+

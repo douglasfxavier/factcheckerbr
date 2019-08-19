@@ -1,34 +1,50 @@
 extends ../layout/layout
 block content
-    div.container
-        h1.mb-3 Novo review
+    div(class="text-right", style="margin:25px;")
+        img.img-fluid(src="/images/factcheckerbrlogo.svg" alt="FactCheckBR logo" style="height:20%;width:30%;")
+    div(class="text-left", style="margin:100px;")
+        div.col-md-12.text-left
+            h1 Deixe aqui sua queixa sobre a notícia
+    div(class="center-block", style="margin-right:100px;margin-left:100px; margin-top:50;")
         div.row
-            div.col
-                p #[strong URL:] #{url}
-                p #[strong Manchete:] !{newsArticle.headline}
-                p #[strong Descrição:] !{newsArticle.description}
-                p #[strong Autor(es):]
+            div.col-md-6
+                h2.text-center
+                    span(class="badge badge-dark") Dados da notícia
+                div(class="card" style="padding:15px;")
+                    h5 #[strong URL:]
+                    p #{url}
+                    h5 #[strong Manchete:]
+                    p !{newsArticle.headline}
+                    h5 #[strong Descrição:]
+                    p !{newsArticle.description}
                     if newsArticle.author.length > 1
+                        h5 #[strong Jornalistas autores:]
                         each val in newsArticle.author
-                            span </br> #{val.name}
-                    else
-                        span #{newsArticle.author.name}
-                p #[strong Site:] !{newsArticle.publisher.name}
-                - var date = new Date(newsArticle.datePublished)
-                - var day = date.getDate()
-                - var month = date.getMonth()
-                - var year = date.getFullYear()
-                p #[strong Data da publicação:] #{day + '/' + month + '/' + year}
-            div.col
+                            span #{val.name}
+                        else
+                            h5 #[strong Jornalista autor(a):]
+                            span #{newsArticle.author.name}
+                    br
+                    h5 #[strong Site:]
+                    p !{newsArticle.publisher.name}
+                    - var date = new Date(newsArticle.datePublished)
+                    - var day = date.getDate()
+                    - var month = date.getMonth()
+                    - var year = date.getFullYear()
+                    h5 #[strong Data da publicação:]
+                    p #{day + '/' + month + '/' + year}
+            div.col-md-6
+                h2.text-center
+                    span(class="badge badge-dark") Review
                 form(method='POST' action='/review/sucesso')
                     input(name='newsArticle' type='hidden' value=newsArticle)
                     input(name='url' type='hidden' value=url)
-                    label(for='author') Autor
+                    label(for='author') #[strong Autor(a)]
                     input(id='author' name='author'   type='text').form-control
-                    label(for='claimReviewed') Titulo
+                    label(for='claimReviewed') #[strong Titulo]
                     input(id='claimReviewed' name='claimReviewed' type='text').form-control
-                    label(for='review') Titulo
+                    label(for='review') #[strong Comentário]
                     textarea(id='review' name='review' rows=5).form-control
                     <br/>
-                    button.btn-primary.float-right(type='submit') Enviar
+                    button.btn-dark.float-right(type='submit') Enviar
 
