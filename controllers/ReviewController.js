@@ -34,6 +34,7 @@ exports.get_reviews = function (req, res) {
     reviewsCollection.find({"claimReview.itemReviewed.url":req.body.url})
         .toArray(function (err, result) {
             if (err) throw err;
+            console.log(req.body.url);
             console.log(result);
 
             res.json(result);
