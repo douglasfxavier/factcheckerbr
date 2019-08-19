@@ -31,12 +31,13 @@ exports.get_reviews = function (req, res) {
     let app = require('../app');
     let reviewsCollection = app.locals.reviews;
     let query = '{claimReview.itemReviewed.url:"'+ req.body.url + '"}';
-
-    reviewsCollection.findOne(query)
+    
+    reviewsCollection.find(query)
         .toArray(function (err, result) {
             if (err) throw err;
             console.log(req.body.url);
             console.log(result);
+
             res.json(result);
         });
 };
