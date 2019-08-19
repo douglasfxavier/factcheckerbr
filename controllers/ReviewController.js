@@ -30,10 +30,10 @@ exports.save_review = function(req, res){
 exports.get_reviews = function (req, res) {
     let app = require('../app');
     let reviewsCollection = app.locals.reviews;
-    //let query = '{claimReview.itemReviewed.url:"'+ req.body.url + '"}';
+    let query = '{claimReview.itemReviewed.url:"'+ req.body.url + '"}';
     // let query = '{claimReview.itemReviewed.url:"'+ req.body.url + '"}';
 
-    reviewsCollection.find({"claimReview.itemReviewed.url":+'\"' + req.body.url + '\"'})
+    reviewsCollection.find({query})
         .toArray(function (err, result) {
             if (err) throw err;
             console.log(req.body.url);
