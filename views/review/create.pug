@@ -41,10 +41,12 @@ block content
                     input(name='url' type='hidden' value=url)
                     label(for='author') #[strong Autor(a)]
                     input(id='author' name='author'   type='text').form-control
+                    br
                     label(for='claimReviewed') #[strong Titulo]
                     input(id='claimReviewed' name='claimReviewed' type='text').form-control
+                    br
                     label(for='review') #[strong Comentário]
-                    textarea(id='review' name='review' rows=5).form-control
-                    <br/>
+                    textarea(id='review' name='review' rows=10).form-control
+                    br
                     button.btn-dark.float-right(type='submit') Enviar
 
