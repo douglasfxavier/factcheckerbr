@@ -33,7 +33,7 @@ exports.get_reviews = function (req, res) {
     //let query = '{claimReview.itemReviewed.url:"'+ req.body.url + '"}';
     // let query = '{claimReview.itemReviewed.url:"'+ req.body.url + '"}';
 
-    reviewsCollection.find({"claimReview.itemReviewed.url":'\"' + req.body.url + '\"'})
+    reviewsCollection.find({"claimReview.itemReviewed.url":req.body.url})
         .toArray(function (err, result) {
             if (err) throw err;
             console.log(req.body.url);
