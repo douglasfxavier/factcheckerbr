@@ -31,9 +31,9 @@ exports.get_reviews = function (req, res) {
     let app = require('../app');
     let reviewsCollection = app.locals.reviews;
     //let query = '{claimReview.itemReviewed.url:"'+ req.body.url + '"}';
-    let query = '{claimReview.itemReviewed.url:"'+ "https://educacao.estadao.com.br/noticias/geral,mec-estuda-mudar-distribuicao-de-recursos-para-universidades-federais,70002973204" + '"}';
+    let query = 'claimReview.itemReviewed.url:\"https://educacao.estadao.com.br/noticias/geral,mec-estuda-mudar-distribuicao-de-recursos-para-universidades-federais,70002973204\"';
 
-    reviewsCollection.find(query)
+    reviewsCollection.find({query})
         .toArray(function (err, result) {
             if (err) throw err;
             console.log(req.body.url);
