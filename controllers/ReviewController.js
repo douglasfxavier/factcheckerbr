@@ -30,15 +30,10 @@ exports.save_review = function(req, res){
 exports.get_reviews = function (req, res) {
     let app = require('../app');
     let reviewsCollection = app.locals.reviews;
-    let reviews;
 
-    reviewsCollection.find({"claimReview.itemReviewed.url":"https://politica.estadao.com.br/blogs/fausto-macedo/lewandowski-rejeita-pedido-da-rede-contra-decisao-de-toffoli-sobre-coaf/"})
-        .toArray(function (err, result) {
-            reviews = {"test":"test"};
-            if (err) throw err;
+    reviews = reviewsCollection.find({"claimReview.itemReviewed.url":req.body.url});
 
-            console.log(result);
-        });
+    console.log(reviews);
 
     res.json(reviews);
 };

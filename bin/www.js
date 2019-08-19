@@ -19,7 +19,7 @@ dbConnection((client, db) => {
     dbClient = client;
 });
 
-// process.on('SIGINT', () => {
-//     dbClient.close();
-//     process.exit();
-// });
+process.on('SIGINT', () => {
+    dbClient.close();
+    process.exit();
+});
