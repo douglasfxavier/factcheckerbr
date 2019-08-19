@@ -31,7 +31,7 @@ exports.get_reviews = function (req, res) {
     let app = require('../app');
     let reviewsCollection = app.locals.reviews;
 
-    reviewsCollection.find({"claimReview.itemReviewed.url":req.body.url})
+    reviewsCollection.find({"claimReview.itemReviewed.url":"\"" + req.body.url + "\""})
         .toArray(function (err, result) {
             if (err) throw err;
             console.log(req.body.url);
@@ -39,7 +39,5 @@ exports.get_reviews = function (req, res) {
 
             res.json(result);
         });
-
-
 };
 
