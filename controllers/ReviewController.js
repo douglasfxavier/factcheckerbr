@@ -1,7 +1,5 @@
-var app = require('../app');
-var reviewsCollection = app.locals.reviews;
-
 exports.save_review = function(req, res){
+    let app = require('../app');
     let newsHandler = require('../utils/SWNewsHandler');
     let NewsJsonLDBuilder = require('../model/NewsJsonLDBuilder');
     let newsArticle = newsHandler.jsonLDParse(req.body.newsArticle); // Parsing the whole JSON-LD with reviver
@@ -21,7 +19,7 @@ exports.save_review = function(req, res){
         .setPublisher(newsArticle["publisher"])
         .build();
 
-    //let reviewsCollection = app.locals.reviews; //Collection of reviews on MongoDB
+    let reviewsCollection = app.locals.reviews; //Collection of reviews on MongoDB
 
     reviewsCollection.insertOne(reviewJSONLD);
 
@@ -30,9 +28,11 @@ exports.save_review = function(req, res){
 };
 
 exports.get_reviews = function (req, res) {
+    let app = require('../app');
+    let reviewsCollection = app.locals.reviews;
 
     reviews = reviewsCollection.find({"claimReview.itemReviewed.url":"https://politica.estadao.com.br/blogs/fausto-macedo/lewandowski-rejeita-pedido-da-rede-contra-decisao-de-toffoli-sobre-coaf/"});
-    //reviews = {"nome":"douglas"};
+    reviews = JSON.parse(reviews);
     res.json(reviews);
 };
 
