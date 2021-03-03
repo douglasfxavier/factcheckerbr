@@ -18,7 +18,7 @@
     "mongodb": "^3.3.0-beta2",
     "node-fetch": "^2.6.0",
     "nodemon": "^1.19.1",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "xmlhttprequest": "^1.8.0"
   }
 }
